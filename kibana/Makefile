@@ -21,8 +21,8 @@ update:
 	printf "update"
 
 ## Remove service kibana 
-delete:
-	helm delete prd-kibana
+destroy:
+	helm delete prd-kibana --namespace logging
 
 
 ## Prints help message
