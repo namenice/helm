@@ -10,19 +10,32 @@ COLOR_RED = \033[31m
 PROJECT := Kibana
 
 ## Installs service environment
-install: deploy
+#install: deploy
 
-## Install service kibana using helm install
-deploy:
-	helm install prd-kibana ../kibana/ -f values.yaml --namespace logging
-	
-## Update config service kibana
-update:
-	printf "update"
+## Install service kibana using helm install prd
+deploy-prd:
+	helm install prd-kibana ../kibana/ -f values-prd.yaml --namespace logging
 
-## Remove service kibana 
-destroy:
+## Install service kibana using helm install dev
+deploy-dev:
+	helm install dev-kibana ../kibana/ -f values-dev.yaml --namespace logging
+
+## Update config service kibana prd
+update-prd:
+	printf "update prd"
+
+## Update config service kibana dev
+update-dev:
+	printf "update dev"
+
+
+## Remove service kibana prd 
+destroy-prd:
 	helm delete prd-kibana --namespace logging
+
+## Remove service kibana dev
+destroy-dev:
+	helm delete dev-kibana --namespace logging
 
 
 ## Prints help message

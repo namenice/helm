@@ -10,19 +10,34 @@ COLOR_RED = \033[31m
 PROJECT := Elasticsearch
 
 ## Installs service environment
-install: deploy
+#install: deploy
 
-## Install service Elasticsearch using helm install
-deploy:
-	helm install prd-elasticsearch ../elasticsearch/ -f values.yaml --namespace logging
-	
-## Update config service Elasticsearch
-update:
-	printf "update"
 
-## Remove service Elasticsearch
-destroy:
+## Install service Elasticsearch using helm install prd
+deploy-prd:
+	helm install prd-elasticsearch ../elasticsearch/ -f values-prd.yaml --namespace logging
+		
+## Install service Elasticsearch using helm install dev 
+deploy-dev:
+	helm install dev-elasticsearch ../elasticsearch/ -f values-dev.yaml --namespace logging
+
+
+
+## Update config service Elasticsearch prd
+update-prd:
+	printf "update prd"
+
+## Update config service Elasticsearch dev
+update-dev:
+	printf "update dev"
+
+## Remove service Elasticsearch prd
+destroy-prd:
 	helm delete prd-elasticsearch --namespace logging
+
+## Remove service Elasticsearch dev
+destroy-dev:
+	helm delete dev-elasticsearch --namespace logging
 
 
 ## Prints help message
