@@ -54,7 +54,7 @@ configMaps:
     actions:
       1:
         action: delete_indices
-        description: "Clean up ES by deleting old indices"
+        description: "Clean up ES by deleting old indices 90 days"
         options:
           timeout_override:
           continue_if_exception: False
@@ -70,7 +70,7 @@ configMaps:
           direction: older
           timestring: '%Y.%m.%d'
           unit: days
-          unit_count: 1
+          unit_count: 90
           field:
           stats_result:
           epoch:
